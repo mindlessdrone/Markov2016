@@ -31,10 +31,10 @@ public class Markov {
         order = order_;
 
         // BUILD THE MODEL!!!!!!!!!!!!!!!!!
-        constructModel(strings);
+        updateModel(strings);
     }
 
-    private synchronized void updateModel(Iterable<String> strings) {
+    public synchronized void updateModel(Iterable<String> strings) {
         // Regex shit
         String regexStr = "((?:\\S+\\s){%d}\\S+)(?:\\s(\\S+)){0,1}";
         Pattern regex = Pattern.compile(String.format(regexStr, order-1));

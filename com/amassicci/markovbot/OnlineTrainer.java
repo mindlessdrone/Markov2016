@@ -2,6 +2,7 @@ package com.amassicci.markovbot;
 
 import twitter4j.*;
 import com.amassicci.markovbot.utils.*;
+import java.util.*;
 
 public class OnlineTrainer implements StatusListener {
     // Thread name
@@ -20,10 +21,17 @@ public class OnlineTrainer implements StatusListener {
     @Override
     public void onStatus(Status status) {
         String userName = status.getUser().getName();
-        String text= status.getText();
+        String text = status.getText();
+
 
         String message = String.format("Recieved from @%s: %s", userName, text);
         Message.display(Message.INFO_MSG, THREAD_NAME, message);
+
+        // update model
+        List<String> msg = new ArrayList<>();
+        msg.add(text);
+        model.updateModel(msg);
+        Message.display(Message.INFO_MSG, THREAD_NAME, "The model has been updated.");
     }
 
     // implemented stubs
@@ -36,9 +44,6 @@ public class OnlineTrainer implements StatusListener {
         Message.display(Message.ERROR_MSG, THREAD_NAME, "An exception has occurred!, Stack trace incoming.");
         ex.printStackTrace();
     }
-
-
-
 
 }
 
