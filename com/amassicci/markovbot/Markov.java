@@ -34,7 +34,7 @@ public class Markov {
         constructModel(strings);
     }
 
-    private void constructModel(Iterable<String> strings) {
+    private synchronized void updateModel(Iterable<String> strings) {
         // Regex shit
         String regexStr = "((?:\\S+\\s){%d}\\S+)(?:\\s(\\S+)){0,1}";
         Pattern regex = Pattern.compile(String.format(regexStr, order-1));
@@ -90,7 +90,7 @@ public class Markov {
         return currentState;
     }
 
-    public String generate() {
+    public synchronized String generate() {
         String word;
         List<String> words = new ArrayList<>();
 
