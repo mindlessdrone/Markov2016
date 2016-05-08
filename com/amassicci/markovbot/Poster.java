@@ -16,6 +16,7 @@ public class Poster implements Runnable {
         twitter = twitter_;
         model = model_;
         isRunning = true;
+        Message.display(Message.INFO_MSG, THREAD_NAME, "Hello from Poster!");
     }
 
 
@@ -32,7 +33,8 @@ public class Poster implements Runnable {
                 isRunning = false;
                 break;
             }
-
+    
+            Message.display(Message.INFO_MSG, THREAD_NAME, "Text generated and successfully posted to Twitter.");
             // take a nap for a bit to avoid rate limits
             Message.display(Message.INFO_MSG, THREAD_NAME, "Sleeping for 1m.");
             try {
