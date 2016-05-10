@@ -21,6 +21,12 @@ public class Poster implements Runnable {
 
 
     // implemented fields
+
+    //---------------------------------------------------
+    // run: Main Thread entry point, posts tweets and then
+    // sleeps for one minute to avoid Twitter being angry
+    // with us
+    // --------------------------------------------------
     public void run() {
         while (isRunning) {
 
@@ -46,6 +52,10 @@ public class Poster implements Runnable {
         }
     }
 
+    //------------------------------------------------------------
+    // shutdown: called when the thread needs to be shutdown
+    // cleans up and ends thread loop.
+    // -----------------------------------------------------------
     public void shutdown() {
         isRunning = false;
         Message.display(Message.INFO_MSG, THREAD_NAME, "Shutting down");

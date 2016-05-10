@@ -18,6 +18,12 @@ public class OnlineTrainer implements StatusListener {
     }
 
     // implemented methods
+    
+
+    //-----------------------------------------------------------------
+    // onStatus: Called when a Twitter sends us a new tweet to process
+    // updates model with new data.
+    // ----------------------------------------------------------------
     @Override
     public void onStatus(Status status) {
         String userName = status.getUser().getName();
@@ -40,6 +46,11 @@ public class OnlineTrainer implements StatusListener {
     public void onStallWarning(StallWarning warning){}
     public void onScrubGeo(long userId, long upToStatusId) {}
     //Exception handling
+
+    //--------------------------------------------------------------------
+    // onException: Called when we recieve an error (Connection error,
+    // Authentication issues, etc)
+    // -------------------------------------------------------------------
     public void onException(Exception ex) {
         Message.display(Message.ERROR_MSG, THREAD_NAME, "An exception has occurred!, Stack trace incoming.");
         ex.printStackTrace();

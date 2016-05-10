@@ -34,6 +34,11 @@ public class Markov {
         updateModel(strings);
     }
 
+    //--------------------------------------------------------------------
+    // updateModel: Takes an iterable object of strings and updates model
+    // with appropiate keys and probabilities. This is basically where the
+    // magic happens.
+    // ------------------------------------------------------------------
     public synchronized void updateModel(Iterable<String> strings) {
         // Regex shit
         String regexStr = "((?:\\S+\\s){%d}\\S+)(?:\\s(\\S+)){0,1}";
@@ -70,7 +75,11 @@ public class Markov {
         }
     }
 
-    public String next() {
+    //----------------------------------------------------------------
+    // next: Used to perform a random walk through our model, for the
+    // funnys.
+    // ---------------------------------------------------------------
+    private String next() {
         Random r = new Random();
         int choice;
         String currentMem;
@@ -90,6 +99,9 @@ public class Markov {
         return currentState;
     }
 
+    //--------------------------------------------------------
+    // generate: Used by external programs to generate text,
+    //--------------------------------------------------------
     public synchronized String generate() {
         String word;
         List<String> words = new ArrayList<>();
@@ -101,6 +113,7 @@ public class Markov {
         return String.join(" ", words);
     }
 
+    // Early testing stuff
     public static void unittest() throws IOException {
         Scanner scan = new Scanner(new File("trumptweets.txt"));
         List<String> lines = new ArrayList<>();
