@@ -3,6 +3,23 @@ package com.amassicci.markovbot;
 import twitter4j.*;
 import com.amassicci.markovbot.utils.*;
 
+/***********************************************
+ * Poster: Main posting thread, uses model to 
+ * generate text and sleeps to avoid rate limits
+ * Author: Anthony Massicci
+ *
+ * fields
+ *  +static final String THREAD_NAME
+ *  -Twitter twitter
+ *  -Markov model
+ *  -boolean isRunning
+ *
+ * methods
+ *  +Poster(Twitter, Markov)
+ *  +void run()
+ *  +void shutdown()
+ *  ********************************************/
+
 public class Poster implements Runnable {
     //thread name
     public static final String THREAD_NAME = "Poster";

@@ -4,6 +4,22 @@ import twitter4j.*;
 import com.amassicci.markovbot.utils.*;
 import java.util.*;
 
+/**********************************************************
+ * OnlineTrainer: Handles Twitter Streaming events and improves
+ * the Markov Chain in realtime!
+ * Author: Anthony Massicci
+ *
+ *
+ * fields:
+ * +static final string THREAD_NAME
+ * -Markov model
+ *
+ * methods:
+ *  OnlineTrainer(Markov)
+ *  void onStatus(Status)
+ *  void onException(Exception)
+ **********************************************************/
+
 public class OnlineTrainer implements StatusListener {
     // Thread name
     public static final String THREAD_NAME = "Trainer";

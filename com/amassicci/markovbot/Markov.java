@@ -1,12 +1,30 @@
-package com.amassicci.markovbot; /**
- * Created by Anthony on 3/11/2016.
- */
+package com.amassicci.markovbot;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+/******************************************************
+ * Markov: Implements the Markov Chain used in this program
+ * Author: Anthony Massicci
+ *
+ * fields:
+ *  -static final int DEFAULT_ORDER
+ *  -String currentState
+ *  -List<String> memory
+ *  -List<String> stateStates
+ *  -Map<String List<String>> model
+ *  -int order
+ *
+ * methods:
+ *  +Markov(Iterable<String>)
+ *  +Markov(Iterable<String>, int)
+ *  +void updateModel(Iterable<String>)
+ *  -void next()
+ *  +String generate()
+ *  ************************************************/
 
 public class Markov {
     private static final int DEFAULT_ORDER = 1;

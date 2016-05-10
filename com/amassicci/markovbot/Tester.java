@@ -14,6 +14,15 @@ import jsjf.*;
  * and posts political sounding tweets.
  *
  *
+ * Program Logic:
+ *  Read in initial training data
+ *  Start Twitter streaming thread.
+ *  Start Twitter posting thread.
+ *  Add shutdown hook to cleanly shutdown program
+ *  While (childThreads are alive)
+ *      Sleep!
+ *  End While
+ *
  * *****************************************************/
 
 
